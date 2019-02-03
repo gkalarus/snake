@@ -3,7 +3,8 @@ function Snake() {
   this.y = 0;
   this.xSpeed = scale * 1;
   this.ySpeed = 0;
-  this.total = 0; //licznik zmieniający się o 1 po zjedzeniu jabłka
+  this.total = 0; //licznik zmieniający się po zjedzeniu jabłka
+  this.tailCounter = 0;
   this.tail = [];
 
   this.draw = function () {
@@ -16,11 +17,13 @@ function Snake() {
   }
 
   this.update = function () {
+
+
     for (let i = 0; i < this.tail.length - 1; i++) {
       this.tail[i] = this.tail[i + 1];
     }
 
-    this.tail[this.total - 1] = {
+    this.tail[this.tailCounter - 1] = {
       x: this.x,
       y: this.y
     };
@@ -74,9 +77,16 @@ function Snake() {
 
   // sprawdzenie czy snake zjadł jabłko
 
-  this.eat = function (fruit) {
+  this.eat = function (fruit, level) {
     if (this.x === fruit.x && this.y === fruit.y) {
-      this.total++;
+      if (level === 'first') {
+        this.tailCounter++;
+        this.total++;
+      } else if (level === 'second') {
+        this.tailCounter++;
+        this.total += 2;
+      }
+
       return true;
     }
     return false;
@@ -91,6 +101,7 @@ function Snake() {
     for (var i = 0; i < this.tail.length; i++) {
       if (this.x === this.tail[i].x && this.y === this.tail[i].y) {
         this.total = 0;
+        this.tailCounter = 0;
         this.tail = [];
         this.x = 0;
         this.y = 0;
@@ -101,6 +112,7 @@ function Snake() {
     for (var i = 0; i < selectedLevel.length; i++) {
       if (this.x === selectedLevel[i].x && this.y === selectedLevel[i].y) {
         this.total = 0;
+        this.tailCounter = 0;
         this.tail = [];
         this.x = 0;
         this.y = 0;

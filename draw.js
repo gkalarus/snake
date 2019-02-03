@@ -4,6 +4,7 @@ var scale = 10;
 var rows = canvas.height / scale;
 var columns = canvas.width / scale;
 var activationBtn = document.querySelector('.activationBtn');
+var stopBtn = document.querySelector('.stopBtn');
 
 activationBtn.addEventListener('click', function () {
 
@@ -16,8 +17,7 @@ activationBtn.addEventListener('click', function () {
     levels = new Levels();
     apple.pickLocation(selectedLevel);
 
-    window.setInterval(function () {
-
+    var updateInterval = window.setInterval(function () {
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       levels.draw(selectedLevel);
@@ -25,7 +25,7 @@ activationBtn.addEventListener('click', function () {
       snake.update();
       snake.draw();
 
-      if (snake.eat(apple)) {
+      if (snake.eat(apple, selectedLevel)) {
         apple.pickLocation(selectedLevel);
       }
 
@@ -33,11 +33,21 @@ activationBtn.addEventListener('click', function () {
       document.querySelector('.score').innerText = snake.total;
 
     }, 200);
+
+
+    stopBtn.addEventListener('click', function () {
+      clearInterval(updateInterval);
+    })
+
+
   }());
+
+
 
   window.addEventListener('keydown', function (e) {
     var direction = e.key.replace('Arrow', '');
     snake.changeDirection(direction);
   });
+
 
 })
