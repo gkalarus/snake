@@ -403,7 +403,7 @@ function Levels() {
       x: 160,
       y: 170
     },
-    
+
   ];
 
   this.fourth = [{
@@ -664,8 +664,7 @@ function Levels() {
     },
   ];
 
-  this.fifth = [
-    {
+  this.fifth = [{
       x: 20,
       y: 10
     },
@@ -761,7 +760,7 @@ function Levels() {
       x: 100,
       y: 190
     },
-    
+
     {
       x: 30,
       y: 20
@@ -1025,7 +1024,7 @@ function Levels() {
     var selectedLevel = this[level]
 
     ctx.fillStyle = "#FF00FF";
-    for (let i = 0; i < selectedLevel.length; i++) {
+    for (var i = 0; i < selectedLevel.length; i++) {
       ctx.fillRect(selectedLevel[i].x, selectedLevel[i].y, scale, scale);
     }
 

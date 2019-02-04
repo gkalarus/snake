@@ -10,7 +10,7 @@ function Snake() {
 
   this.draw = function () {
     ctx.fillStyle = "#fff";
-    for (let i = 0; i < this.tail.length; i++) {
+    for (var i = 0; i < this.tail.length; i++) {
       ctx.fillRect(this.tail[i].x, this.tail[i].y, scale, scale);
     }
 
@@ -20,7 +20,7 @@ function Snake() {
   this.update = function () {
 
 
-    for (let i = 0; i < this.tail.length - 1; i++) {
+    for (var i = 0; i < this.tail.length - 1; i++) {
       this.tail[i] = this.tail[i + 1];
     }
 

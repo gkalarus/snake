@@ -2,10 +2,12 @@ ol {
   list-style: none;
   counter-reset: item;
 }
+
 li {
   counter-increment: item;
   margin-bottom: 5px;
 }
+
 li:before {
   margin-right: 10px;
   content: counter(item);
@@ -16,6 +18,7 @@ li:before {
   text-align: center;
   display: inline-block;
 }
+
 .hidden {
   display: none;
 }
