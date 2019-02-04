@@ -15,7 +15,6 @@ function Apple() {
     if(this.checkCollision(selectedLevel)) {
       this.pickLocation(selectedLevel);
     }
-
   
   }
 
@@ -24,14 +23,13 @@ function Apple() {
     
     for (var i=0; i< selectedLevel.length; i++) {
       if (this.x === selectedLevel[i].x && this.y === selectedLevel[i].y) {
-        console.log('wystąpiła kolizja')
         return true
       }
     }
   }
 
   this.draw = function() {
-    ctx.fillStyle = "#FF0000";
+    ctx.fillStyle = "#7CFC00";
     ctx.fillRect(this.x, this.y, scale, scale)
   }
 }

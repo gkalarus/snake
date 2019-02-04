@@ -5,9 +5,12 @@ var rows = canvas.height / scale;
 var columns = canvas.width / scale;
 var activationBtn = document.querySelector('.activationBtn');
 var stopBtn = document.querySelector('.stopBtn');
+var currPoints = document.querySelector('.currPoints');
+var score = document.querySelector('.score');
 
 activationBtn.addEventListener('click', function () {
-
+  currPoints.classList.remove('hidden');
+  score.classList.remove('hidden');
   (function setup() {
     var selection = document.querySelector('.selection')
     var selectedLevel = selection[selection.selectedIndex].value;
@@ -34,17 +37,17 @@ activationBtn.addEventListener('click', function () {
 
     }, 200);
 
-
     stopBtn.addEventListener('click', function () {
+      currPoints.classList.add('hidden');
+      score.classList.add('hidden');
+
       clearInterval(updateInterval);
     })
 
-
   }());
 
-
-
   window.addEventListener('keydown', function (e) {
+
     var direction = e.key.replace('Arrow', '');
     snake.changeDirection(direction);
   });
